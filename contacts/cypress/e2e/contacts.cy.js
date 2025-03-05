@@ -87,7 +87,7 @@ describe('Sorting contacts by phone number', () => {
   it('should sort contacts by phone number', () => {
 
     cy.get('input[placeholder="Ім\'я"]').type('Ганна');
-    cy.get('input[placeholder="Телефон"]').type('0668854495');
+    cy.get('input[placeholder="Телефон"]').type('1234567890');
     cy.contains('Додати').click();
     
     cy.get('input[placeholder="Ім\'я"]').type('Михайло');
@@ -96,7 +96,7 @@ describe('Sorting contacts by phone number', () => {
 
     cy.contains('Сортувати за телефоном').click();
     
-    cy.get('.contacts-list li').eq(0).should('contain.text', '0668854495');
+    cy.get('.contacts-list li').eq(0).should('contain.text', '1234567890');
     cy.get('.contacts-list li').eq(1).should('contain.text', '0987654321');
   });
 });
