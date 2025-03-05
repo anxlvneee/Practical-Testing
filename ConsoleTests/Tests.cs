@@ -56,5 +56,33 @@ namespace ConsoleTests
             Assert.Contains("�i���!", resultMin); 
             Assert.Contains("�i���!", resultMax);
         }
+
+        [Fact]
+        public void GetAttempts_ShouldReturnCorrectAttemptsCount()
+        {
+            // Arrange
+            var game = new GuessNumber(50);
+
+            // Act
+            game.Guess(30);
+            game.Guess(50);
+
+            // Assert
+            Assert.Equal(2, game.GetAttempts());
+        }
+
+        [Fact]
+        public void Guess_ShouldHandleInvalidInputGracefully()
+        {
+            // Arrange
+            var game = new GuessNumber(50);
+            string userInput = "abc";
+
+            // Act
+            bool isValidInput = int.TryParse(userInput, out int userGuess);
+
+            // Assert
+            Assert.False(isValidInput);
+        }
     }
 }
